@@ -151,7 +151,7 @@ const handleSubmit=async(e)=>{
             </form></div>
         )}
 
-         
+         <div style={{float:"right"}}>
         {/* //book filtering */}
         <select name="category" onChange={(e)=>setCategory(e.target.value)}>
             <option value="">All</option>
@@ -174,6 +174,7 @@ const handleSubmit=async(e)=>{
             <option value="price_desc">Sort by Price Descending</option>
 
         </select>
+        </div> 
      
       <div className='books-list'>
         {books.map((book)=>{
