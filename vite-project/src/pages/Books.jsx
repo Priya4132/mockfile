@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useContext } from 'react'
 import axios from 'axios'
 import '../styles/books.css'
-// import Navigation from 'react-router-dom'
+//  import {Navigate} from 'react-router-dom'
 
 const iniitalbook={
     name:"",
@@ -21,7 +21,7 @@ const Books = () => {
     const[formData,setFormData]=useState([]);
     const[isLoading,setIsLoading]=useState(false);
     const[error,setError]=useState("");
-    // const navigate=useNavigation();
+    // const navigate=useNavigate();
 
 
     //setting state of category filter
@@ -117,6 +117,21 @@ const handleSubmit=async(e)=>{
             }
         }
 
+        // //edit book 
+        // const handleEdit=(id)=>{
+        //     // setAddBook(!addbook);
+        //     useEffect(()=>{
+        //         try{
+        //             let response=  axios.get(`https://prairie-excited-garage.glitch.me/books/${id}`);
+        //             console.log(response.data);
+        //             setFormData(response.data)
+
+        //         }catch{
+        //             alert("failed to edit the book")
+        //         }
+        //     },[id])
+        // }
+
   return (
     <>
     {isLoading && <p>Loading....</p>}
@@ -125,7 +140,7 @@ const handleSubmit=async(e)=>{
          <h1 style={{textAlign:"center"}}>List of Books</h1>
          {/* Add new Book */}
          <button onClick={handleAddBook}>Add New book</button>
-         {addbook && (<div>
+         {addbook && (<div id="form">
             <h1>Add New book</h1>
          <form action="" onSubmit={handleSubmit}>
             <input type="text" placeholder='Book Name' name="name"  value={formData.name} onChange={handleChange}/>
@@ -168,6 +183,7 @@ const handleSubmit=async(e)=>{
                     <p>Category:{book.category}</p>
                     <p>Price:{book.price}</p>
                     <p>Author:{book.author}</p>
+                    <button onClick={()=>handleEdit(book.id)}>Edit</button>
                     <button className='delete' onClick={()=>handleDelete(book.id)}>Delete</button>
                     {/* <button onClick={()=>navigate(`/books/${book.id}`)}>View Book</button> */}
                 </div>

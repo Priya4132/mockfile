@@ -2,24 +2,31 @@ import React from 'react'
 import { useState } from 'react'
 import '../styles/login.css'
 import { useContext } from 'react';
-import AuthContext1 from '../context/AuthContext';
+import AuthContext from '../context/AuthContextProvider';
+import { useNavigate } from 'react-router';
 
 const Login = () => {
     //setting state of username and password
     const [username,setUsername]=useState("");
     const [password,setPassword]=useState("");
 const[error,setError]=useState("");
+const navigate=useNavigate();
 
 //geting authentication from context
-const{login}=useContext(AuthContext1);
-console.log(login())
+ const login=useContext(AuthContext);
+// console.log(login())
 
 
 
 const handleLogin= async()=>{
     try{
       let response=  await axios.post("https://prairie-excited-garage.glitch.me/login")
-      console.log(response)
+      console.log(response.data.token)
+      if(response.data.success){
+        const {token}=response.data
+        login(token);
+        // navigate("/movies")
+      }
 
     }catch(err){
 

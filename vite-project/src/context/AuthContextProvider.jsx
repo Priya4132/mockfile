@@ -4,8 +4,8 @@ import { createContext } from 'react'
 
 
 //creating the conetxt
-const AuthContext1=createContext();
-const AuthContext = ({children}) => {
+const AuthContext=createContext();
+const AuthContextProvider = ({children}) => {
     //setting state of login 
     const[isAuthenticated,setIsAuthenticated]=useState(false);
     //setting state of token 
@@ -13,20 +13,22 @@ const AuthContext = ({children}) => {
 
     //login function
 
-    const login=()=>{
+    const login=(authToken)=>{
         setIsAuthenticated(true);
-        setToken(token)
+        setToken(authToken)
+        localStorage.setItem("token",authToken)
 
     }
     const logout=()=>{
         setIsAuthenticated(false);
         setToken(null)
+        localStorage.removeItem("token")
         
     }
     
   return (
-    <AuthContext1.Provider value={{isAuthenticated,login,logout,token}}> {children}</ AuthContext1.Provider>
+    <AuthContext.Provider value={{isAuthenticated,login,logout,token}}> {children}</ AuthContext.Provider>
   )
 }
 
-export default AuthContext
+export default AuthContextProvider

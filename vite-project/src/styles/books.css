@@ -28,3 +28,33 @@
     border:none;
     border-radius: 5px;  
 }
+#form{
+    display: flex;
+    flex-direction: column;
+    margin-left:400px;
+    /* background-color: red; */
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width:50%;
+    
+}
+
+form input{
+    padding:5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+form [type="submit"]{
+    background-color: rgb(236, 128, 101);
+}
+button{
+    background-color: rgb(179, 87, 87);
+    opacity: 0.7;
+    color: white;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;
+    margin:5px;
+}
