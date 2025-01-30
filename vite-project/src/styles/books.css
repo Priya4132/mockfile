@@ -1,0 +1,30 @@
+.books-list{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:20px;
+    align-items: center;
+    padding:20px;
+    
+}
+.books{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+.delete{
+    background-color: red;
+    opacity: 0.7;
+    color: white;
+    padding: 5px;
+    border:none;
+    border-radius: 5px;
+}
+.prenext{
+    background-color: rgb(179, 87, 87);
+    opacity: 0.7;
+    color: white;
+    padding: 10px;
+    border:none;
+    border-radius: 5px;  
+}
